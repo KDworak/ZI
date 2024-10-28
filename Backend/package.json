@@ -1,6 +1,7 @@
 {
   "name": "serve-node",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "app/app.js",
   "scripts": {

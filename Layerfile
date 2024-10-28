@@ -9,7 +9,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/doc
 RUN apt-get update
 RUN apt-get install docker-ce docker-ce-cli containerd.io npm
 COPY . .
-RUN docker compose up
+RUN docker compose up -d
 EXPOSE WEBSITE localhost:3001 /api
 EXPOSE WEBSITE localhost:80 /
 

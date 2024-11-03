@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-[100%]"> 
+    <html lang="en" className="bg-white h-[100%]"> 
       <body className="h-[100%]">
         <UserProvider>
           <Menu />

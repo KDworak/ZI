@@ -7,11 +7,21 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
+        "gradient-conic":
+          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'myCol': '#243c5a',
+        'myBg': '#cccccc',
+        'formInputBgCol': '#c9d7e8',
+      },
+      transitionDuration: {
+        '2000': '2000ms',
+      }
     },
   },
   plugins: [],
 };
+

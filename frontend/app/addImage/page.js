@@ -1,0 +1,1 @@
+// Dodanie zdjęcia

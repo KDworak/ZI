@@ -127,7 +127,7 @@ export default function Home() {
 
       {//bigImgActive?<div class="flex"><div><Image src={bigImgActive}  onClick={()=>showMore(bigImgActive)} layout="intrinsic" height="200" width="500" alt={"Image"} className=" top-1/3 rounded-t-2xl0 fixed rounded-t-2xl z-40 hover:cursor-pointer" /></div>
 
-            bigImgActive?<div className="absolute lg:fixed left-0 right-0 mx-auto top-0 lg:top-[50px] flex w-[100%] lg:w-[80%] flex-col lg:flex-row bg-white shadow-xl rounded-2xl z-50    pt-12 lg:pt-0 ">  <div onClick={()=>closeMore()} class="fixed top-0 left-0 h-[100vh] w-full bg-black opacity-80 hover:cursor-pointer"></div><div class="w-full content-left z-50 bg-white  lg:rounded-l-2xl" >
+            bigImgActive?<div className="absolute lg:fixed left-0 right-0 mx-auto top-0 lg:top-[50px] flex w-[100%] lg:w-[80%] flex-col lg:flex-row bg-white shadow-xl rounded-2xl z-50    pt-12 lg:pt-0 ">  <div onClick={()=>closeMore()} className="fixed top-0 left-0 h-[100vh] w-full bg-black opacity-80 hover:cursor-pointer"></div><div className="w-full content-left z-50 bg-white  lg:rounded-l-2xl" >
               <div><Image src='/closeIcon.png' width='32' height='32' alt='close card logo' className=" right-0 block lg:hidden  absolute mt-6 mr-6 hover:cursor-pointer z-99"  onClick={()=>closeMore()}/><p className="text-center text-[24px] text-myCol font-bold pb-8 pt-6">{bigImgActive.title}</p></div>
               <div className="relative h-[full]  flex justify-center"><Image src={bigImgActive.imageData}  height={200}  width={784}alt={"Image"} className="h-[100%] object-contain max-h-[600px]  z-50 " />
                 

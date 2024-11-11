@@ -30,17 +30,23 @@ const Register = () => {
                 setMsgSuccess('Konto zostało utworzone.');
                 setMsgFail('');
                 
-            } catch (error) {
-                console.error('Error:', error);
-            }
-            finally{
+            }catch (error) {
+                if (error.response?.status === 400) {
+                    setMsgFail(error.response.data.message || "Istnieje już użytkownik o podanej nazwie.");
+                } else {
+                  console.error("Nieoczekiwany błąd:", error);
+                }
+              }finally{
                 setIsLoading(false);   
+            }}else {
+                setMsgSuccess('');
+                setIsLoading(false);  
+                setMsgFail('Hasła nie są takie same !');
             }
-        } else {
-            setMsgSuccess('');
-            setIsLoading(false);  
-            setMsgFail('Hasła nie są takie same !');
-        }
+            
+            
+            
+            
     };
 
     return (

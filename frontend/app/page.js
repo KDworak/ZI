@@ -65,6 +65,57 @@ export default function Home() {
     return 0;
   };
 
+  const deleteUserComment = async (commentIdToDelete) => {
+    const confirmed = window.confirm("Czy na pewno chcesz usunąć ten komentarz ?");
+  if (!confirmed) {
+    return;
+  }
+  try {
+    await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/deleteComment/${commentIdToDelete}`);
+    setComments(prevComments => prevComments.filter(comment => comment._id !== commentIdToDelete));
+    //console.log(commentIdToDelete);
+    console.log('Comment deleted successfully:');
+  } catch (error) {
+    //console.error('Error deleting comment:', error);
+  }
+  return 0;
+};
+
+  const handleSubmitComment = async (e) => {
+    e.preventDefault();
+    setIsLoadingAddComment(true);
+    try {
+
+      const currentDate = new Date();
+      const day = String(currentDate.getDate()).padStart(2, '0'); 
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+      const year = String(currentDate.getFullYear()).slice(-2); 
+
+      const formattedDate = `${day}-${month}-${year}`;
+      
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/createComment`, {
+        id_IMG: bigImgActive._id,
+        id_User: userId, 
+        text: commentText,
+        date: formattedDate,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+  
+      
+        console.log('Comment added');
+        showMore(bigImgActive);
+        setCommentText('');
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }finally{
+      
+      setIsLoadingAddComment(false);
+    }
+  };
 
   return (
     <div className="relative">

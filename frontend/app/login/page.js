@@ -28,8 +28,15 @@ const login = () => {
             //signIn = true;
             router.push('/');
         } catch (error) {
-            console.error('Error:', error);
-            setMsgSuccess('');setMsgFail('Użytkownik nie istnieje, sprawdź dane!');
+            if (error.response?.status === 401 || error.response?.status === 404) {
+                setMsgFail(error.response.data.message || "Niepoprawne dane");
+            }
+             else {
+              setMsgFail(error.response.data.message || "Nieoczekiwany błąd");
+              console.error("Nieoczekiwany błąd:", error);
+            }
+            setMsgSuccess('')
+            
         }
     };
 

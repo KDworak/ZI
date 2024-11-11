@@ -41,7 +41,6 @@ const addImage = () => {
             setMessage('Zdjęcie dodane');
         } catch(error){  
             console.log(error);
-            console.log(error.response.data);   
             setMessage('Błąd podczas wstawiania pliku.');          
         }
         finally{

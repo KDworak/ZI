@@ -1,4 +1,6 @@
 import userManager from "./user.manager.js";
+import imageManager from "./image.manager.js";
+import commentManager from "./comment.manager.js";
 
 function getter(manager, request) {
     return function () {
@@ -8,4 +10,6 @@ function getter(manager, request) {
 
 export default {
     getUserManager: getter(userManager),
+    getImageManager: getter(imageManager),
+    getCommentManager: getter(commentManager),
 };

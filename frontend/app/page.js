@@ -106,7 +106,13 @@ export default function Home() {
   
       
         console.log('Comment added');
-        showMore(bigImgActive);
+        setComments(prevComments => [...prevComments, {
+        id_User: userName, // zakładając, że userName reprezentuje nazwę użytkownika
+        text: commentText,
+        date: formattedDate,
+        _id: response.data.commentId, // zakładam, że serwer zwraca ID nowego komentarza
+      }]);
+
         setCommentText('');
       
     } catch (error) {

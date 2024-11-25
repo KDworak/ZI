@@ -73,9 +73,10 @@ const addImage = () => {
                     <label htmlFor="is_public">Czy publiczne:</label>
                     <input type="checkbox" id="is_public" checked={isPublic} onChange={(e) => setIsPublic(e.target.checked)} className="ml-2 border border-myCol rounded " />
                 </div>
-                <div className=''>
-                    <label htmlFor="file">Wybierz zdjęcie:</label><br/>
-                    <input type="file" id="file" accept="image/*" onChange={handleFileChange} className=" "  required/>
+                <div className="mt-4">
+                    <label htmlFor="file" className="bg-myCol p-2 rounded-md text-myBg shadow-lg cursor-pointer inline-block">Przeglądaj</label>
+                    <input type="file" id="file" accept="image/*" onChange={handleFileChange} className="hidden" required />
+                    {file && <span className="ml-2">{file.name}</span>}
                 </div><br/>
                 <div className="flex items-center">
                     <button type="submit" className='bg-myCol p-2 rounded-md text-myBg shadow-lg'>Dodaj</button>

@@ -8,7 +8,11 @@ const  userImages = () => {
   const [allImages, setAllImages] = useState([]);
   const [bigImgActive, setBigImgActive] = useState();
   const [loading, setLoading] = useState(false);
-
+  const [isloadingComments, setIsLoadingComments] = useState(false);
+  const [isLoadingAddComment, setIsLoadingAddComment] = useState(false);
+  const [commentText, setCommentText] = useState("");
+  const [comments, setComments] = useState([]);
+  const { userName, userId } = useUser();
 
   useEffect(() => {
     
@@ -44,7 +48,25 @@ const  userImages = () => {
     fetchAllImages();
   }, []);
 
- 
+  const showMore = async (image) => {
+    setBigImgActive(image);
+    setIsLoadingComments(true);
+    try {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/Comment/byId/${image._id}`);
+      const commentsData = response.data;
+      setComments(commentsData);
+    } catch (error) {
+      console.error('Error fetching comments:', error);
+    }
+    finally{
+      setIsLoadingComments(false);
+    }
+  };
+
+  const closeMore = () => {
+    setBigImgActive(null);
+    return 0;
+  };
  
   
   return (

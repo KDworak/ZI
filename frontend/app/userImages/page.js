@@ -51,7 +51,8 @@ const  userImages = () => {
   const showMore = async (image) => {
     setBigImgActive(image);
     setIsLoadingComments(true);
-      window.scrollTo({ top: 210, behavior: 'smooth' });
+    window.scrollTo({ top: 210, behavior: 'smooth' });
+
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/Comment/byId/${image._id}`);
       const commentsData = response.data;

@@ -35,7 +35,7 @@ const  userImages = () => {
         // Filtrujemy wartości null, gdy brakuje image_data lub imgType
         const filteredImages = convertedImages.filter(image => image !== null);
 
-        setAllImages(filteredImages);
+        setAllImages(filteredImages.reverse());
         
       } catch (error) {
         console.log("Error: " + error);

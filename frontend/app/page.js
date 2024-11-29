@@ -32,7 +32,7 @@ export default function Home() {
         // Filtrujemy wartości null, gdy brakuje image_data lub imgType
         const filteredImages = convertedImages.filter(image => image !== null);
 
-        setAllImages(filteredImages);
+        setAllImages(filteredImages.reverse());
         
       } catch (error) {
         console.log("Error: " + error);
@@ -47,6 +47,7 @@ export default function Home() {
   const showMore = async (image) => {
     setBigImgActive(image);
     setIsLoadingComments(true);
+    window.scrollTo({ top: 210, behavior: 'smooth' });
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/Comment/byId/${image._id}`);
       const commentsData = response.data;
